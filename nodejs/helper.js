@@ -169,9 +169,8 @@ class TextToSpeech {
                 const row = [];
                 for (let t = 0; t < latentLen; t++) {
                     // Box-Muller transform for normal distribution
-                    // Add epsilon to avoid log(0)
-                    const eps = 1e-10;
-                    const u1 = Math.max(eps, Math.random());
+                    // Use Number.MIN_VALUE as epsilon to avoid log(0)
+                    const u1 = Math.max(Number.MIN_VALUE, Math.random());
                     const u2 = Math.random();
                     const randNormal = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
                     row.push(randNormal);
