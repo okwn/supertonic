@@ -424,7 +424,7 @@ export function loadVoiceStyle(voiceStylePaths, verbose = false) {
 export async function loadTextToSpeech(onnxDir, useGpu = false) {
     const opts = {};
     if (useGpu) {
-        throw new Error('GPU mode is not supported yet');
+        console.warn('Warning: GPU mode requested but is not yet fully supported. Falling back to CPU inference.');
     } else {
         console.log('Using CPU for inference');
     }
