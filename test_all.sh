@@ -20,13 +20,31 @@ echo "=================================="
 echo ""
 
 # Ask user to select test mode
-echo "Select test mode:"
-echo "  1) Default inference only"
-echo "  2) Batch inference only"
-echo "  3) Long-form inference only"
-echo "  4) All tests (default + batch + long-form)"
-echo -e "Enter your choice (1/2/3/4) [default: 1]: \c"
-read -r test_mode
+# Parse command-line arguments
+MODE_ARG=""
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --mode)
+            MODE_ARG="$2"
+            shift 2
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done
+
+# Ask user to select test mode (skip if --mode was provided)
+test_mode="$MODE_ARG"
+if [ -z "$test_mode" ]; then
+    echo "Select test mode:"
+    echo "  1) Default inference only"
+    echo "  2) Batch inference only"
+    echo "  3) Long-form inference only"
+    echo "  4) All tests (default + batch + long-form)"
+    echo -e "Enter your choice (1/2/3/4) [default: 1]: \c"
+    read -r test_mode
+fi
 test_mode=${test_mode:-1}
 
 case $test_mode in
