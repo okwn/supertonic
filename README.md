@@ -22,6 +22,173 @@
 - **2025.12.08** - Optimized ONNX models via [OnnxSlim](https://github.com/inisis/OnnxSlim) now available on [Hugging Face Models](https://huggingface.co/Supertone/supertonic)
 - **2025.11.24** - Added Flutter SDK support with macOS compatibility
 
+## Development Guide
+
+This section covers how to set up your development environment, run tests, and contribute to Supertonic.
+
+### Prerequisites
+
+- **Git LFS**: Required for downloading model assets
+  ```bash
+  git lfs install
+  ```
+- **Node.js** (for web/nodejs examples)
+- **Python 3.10+** (for py examples)
+- **Go 1.21+** (for go examples)
+- **Java 17+** (for java examples)
+- **.NET 9+** (for csharp examples)
+- **C++17** compatible compiler
+- **Rust 1.75+** (for rust examples)
+- **Swift 5.9+** (for swift examples)
+- **Flutter 3.19+** (for flutter examples)
+
+### Setting Up
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/supertone-inc/supertonic.git
+   cd supertonic
+   ```
+
+2. **Install Git LFS and download assets**:
+   ```bash
+   git lfs install
+   git clone https://huggingface.co/Supertone/supertonic-3 assets
+   ```
+
+3. **Install language-specific dependencies**:
+   ```bash
+   # Python
+   cd py && uv sync
+
+   # Node.js
+   cd nodejs && npm install
+
+   # Web
+   cd web && npm install
+
+   # Go
+   cd go && go mod download
+
+   # Java
+   cd java && mvn clean install
+
+   # C++
+   cd cpp && mkdir build && cd build && cmake ..
+
+   # C#
+   cd csharp && dotnet restore
+
+   # Rust
+   cd rust && cargo fetch
+
+   # Swift
+   cd swift && swift package fetch
+
+   # Flutter
+   cd flutter && flutter pub get
+   ```
+
+### Running Examples
+
+```bash
+# Python
+cd py && uv run example_onnx.py
+
+# Node.js
+cd nodejs && npm start
+
+# Web
+cd web && npm run dev
+
+# Go
+cd go && go run example_onnx.go helper.go
+
+# Java
+cd java && mvn exec:java
+
+# C++
+cd cpp/build && cmake --build . && ./example_onnx
+
+# C#
+cd csharp && dotnet run
+
+# Rust
+cd rust && cargo run --release
+
+# Swift
+cd swift && swift build -c release && .build/release/example_onnx
+
+# Flutter
+cd flutter && flutter run
+```
+
+### Running Tests
+
+```bash
+# Run all language tests
+./test_all.sh
+
+# Or run individually per language
+cd py && uv run pytest
+cd nodejs && npm test
+cd rust && cargo test
+```
+
+### Project Structure
+
+```
+supertonic/
+├── py/           # Python SDK
+├── nodejs/       # Node.js bindings
+├── web/          # Web (WebGPU/WASM)
+├── java/         # Java/JVM bindings
+├── cpp/          # C++ implementation
+├── csharp/       # C# .NET bindings
+├── go/           # Go implementation
+├── swift/        # Swift/macOS bindings
+├── rust/         # Rust implementation
+├── flutter/      # Flutter cross-platform
+├── ios/          # iOS native app
+├── assets/       # ONNX models and voices
+└── img/          # Documentation images
+```
+
+### Code Style
+
+- **Python**: Use `black` and `ruff` for formatting
+- **Node.js**: Use `eslint` and `prettier`
+- **Go**: Run `go fmt` before committing
+- **Rust**: Run `cargo fmt` and `cargo clippy`
+
+### Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/my-feature`)
+3. Make your changes
+4. Run tests to ensure nothing is broken
+5. Commit your changes (`git commit -am 'Add new feature'`)
+6. Push to the branch (`git push origin feature/my-feature`)
+7. Open a Pull Request
+
+### Building Documentation
+
+To build and view documentation locally:
+
+```bash
+# Python docs
+cd py && uv run mkdocs serve
+
+# Check README rendering
+# Install markdownlint or use a preview tool
+```
+
+### Troubleshooting
+
+- **LFS not downloading**: Run `git lfs pull` manually
+- **Build failures**: Ensure you have the latest version of the language runtime
+- **Test failures**: Check that assets are properly downloaded in `assets/` directory
+
 ## Quick Start
 
 Install the Python SDK and generate speech immediately. On the first run, Supertonic downloads the model assets from Hugging Face automatically.
