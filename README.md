@@ -419,6 +419,10 @@ This paper describes the self-purification technique for training flow matching 
 }
 ```
 
+## Contributing
+
+We welcome contributions! Please feel free to submit a Pull Request or open an issue for bug reports and feature suggestions.
+
 ## License
 
 This project's sample code is released under the MIT License. - see the [LICENSE](https://github.com/supertone-inc/supertonic?tab=MIT-1-ov-file) for details.
