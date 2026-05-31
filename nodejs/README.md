@@ -135,6 +135,6 @@ This will:
 
 1. **Pure Node.js WAV Processing**: Writes WAV files without external native libraries. Outputs 16-bit PCM format.
 
-2. **Memory Efficiency**: Note that Node.js may consume significant memory when processing large arrays.
+2. **Memory Efficiency**: Note that Node.js may consume significan't memory when processing large arrays.
 
 3. **Performance**: The mel spectrogram extraction (Step 1-1) is currently slower than Python's Librosa, which uses highly optimized C extensions. This bottleneck could be further improved with additional optimizations such as WASM-based FFT libraries or native addons.
